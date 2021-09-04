@@ -8,7 +8,9 @@
     --buttons-text-color: #212121;
     --buttons-background-color: #F5F4FA;
     --icon-color: #AFB1B8;
-    --projects-card-gap: 30px
+    --projects-card-gap: 30px;
+    --animate-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --animate-time: 250ms;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -86,6 +88,7 @@ body {
 .header-list {
     display: flex;
 }
+
 .header-contacts-item:not(:last-child),
 .header-item:not(:last-child) {
     margin-right: 50px;
@@ -96,6 +99,7 @@ body {
 .header-link:focus {
     color: var(--accent-color);
 }
+
 .header-contacts-link:hover,
 .header-contacts-link:focus {
     color: var(--accent-color);
@@ -112,9 +116,11 @@ body {
     letter-spacing: 0.03em;
     color: #000000;
 }
+
 .logo-web {
     color: #2196f3;
 }
+
 .header-link,
 .header-contacts-link {
     display: block;
@@ -125,12 +131,33 @@ body {
     line-height: 1.14;
     letter-spacing: 0.02em;
     color: var(--title-text-color);
+
+    transition: color var(--animate-time) var(--animate-function);
 }
+
 .header-contacts-link {
     color: var(--main-text-color);
 }
+
 .active {
     color: var(--accent-color);
+}
+
+.header-link {
+    position: relative;
+}
+
+.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+
+    background-color: var(--accent-color);
 }
 
 .header-contacts-icon {
@@ -166,8 +193,10 @@ body {
 }
 
 .hero-button {
-    color: white;
+    color: #ffffff;
     background-color: #2196F3;
+
+    transition: background-color var(--animate-time) var(--animate-function);
 }
 
 .hero-button:hover,
@@ -185,7 +214,7 @@ body {
     text-align: center;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: white;
+    color: #ffffff;
 
     margin-bottom: 30px;
 }
@@ -276,6 +305,29 @@ body {
     color: var(--title-text-color);
 }
 
+.do-item {
+    position: relative;
+}
+
+.do-img-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.14;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: rgba(47, 48, 58, 0.8);
+}
+
 /* ----------------OUR TEAM-------------------- */
 
 .team {
@@ -333,6 +385,8 @@ body {
     height: 44px;
     background-color: #ffffff;
     border-radius: 50%;
+
+    transition: background-color var(--animate-time) var(--animate-function);
 }
 
 .team-social-item:not(:last-child) {
@@ -340,7 +394,11 @@ body {
 }
 
 .team-social-icon {
-    fill: var(--icon-color)
+    fill: var(--icon-color);
+    
+    transition: fill var(--animate-time) var(--animate-function),
+    background-color var(--animate-time) var(--animate-function);
+
 }
 
 .team-social-link:hover,
@@ -366,6 +424,8 @@ body {
     height: 92px;
     border: 1px solid var(--icon-color);
     border-radius: 4px;
+
+    transition: border-color var(--animate-time) var(--animate-function);
 }
 
 .clients-item:not(:last-child) {
@@ -374,6 +434,7 @@ body {
 
 .clients-icon {
     fill: var(--icon-color);
+    transition: fill var(--animate-time) var(--animate-function);
 }
 
 .clients-link:hover .clients-icon,
@@ -465,9 +526,11 @@ body {
     align-items: center;
     width: 44px;
     height: 44px;
+
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
 
+    transition: background-color var(--animate-time) var(--animate-function);
 }
 
 .join-social-icon {
@@ -477,6 +540,69 @@ body {
 .join-social-link:hover,
 .join-social-link:focus {
     background-color: var(--accent-color);
+}
+
+/* ----------------MODAL WINDOW-------------------- */
+
+.backdrop {
+    position: fixed;
+    top:0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 1;
+    transition: opacity var(--animate-time) var(--animate-function);
+}
+
+.modal-window {
+    position: relative;
+
+    width: 528px;
+    min-height: 581px;
+
+    background-color: #ffffff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    transform: scale(1);
+    transition: transform var(--animate-time) var(--animate-function);
+}
+
+.backdrop.is-hidden .modal-window {
+    transform: scale(0.7);
+}
+
+.modal-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    width: 30px;
+    height: 30px;
+
+    background-color: unset;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+
+    transition: fill var(--animate-time) var(--animate-function);
+}
+
+
+.modal-close:hover {
+    fill: var(--accent-color);
+}
+
+.is-hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* PORTFOLIO Page */
@@ -502,10 +628,17 @@ body {
     letter-spacing: 0.03em;
     color: var(--buttons-text-color);
     background-color: var(--buttons-background-color);
+
+    transition: background-color var(--animate-time) var(--animate-function),
+    box-shadow var(--animate-time) var(--animate-function);
 }
+
 .filter-button:hover,
 .filter-button:focus {
     background-color: var(--accent-color);
+    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1),
+    0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 
 .projects-list {
@@ -520,6 +653,7 @@ body {
     margin-right: var(--projects-card-gap);
     margin-bottom: var(--projects-card-gap);
 
+    transition: box-shadow var(--animate-time) var(--animate-function);
 }
 
 .projects-title {
@@ -550,3 +684,36 @@ body {
     0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
+
+.projects-item:hover .projects-description {
+    transform: translateY(0);
+}
+
+.projects-overlay {
+    position: relative;
+    overflow: hidden;
+}
+
+.projects-description {
+    display: flex;
+    align-items: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow: hidden;
+
+    padding-left: 24px;
+    padding-right: 24px;
+
+    font-size: 18px;
+    line-height: 1.56;
+    letter-spacing: 0.03em;
+    color: #FFFFFF;
+    background-color: rgba(33, 150, 243, 0.9);
+
+    transform: translateY(100%);
+    transition: transform var(--animate-time) var(--animate-function);
+}
+
