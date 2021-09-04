@@ -396,16 +396,17 @@ body {
 .team-social-icon {
     fill: var(--icon-color);
     
-    transition: fill var(--animate-time) var(--animate-function),
-    background-color var(--animate-time) var(--animate-function);
+    transition: fill var(--animate-time) var(--animate-function);
 
 }
 
 .team-social-link:hover,
-.team-social-link:focus,
+.team-social-link:focus {
+     background-color: var(--accent-color);
+}
+
 .team-social-link:hover .team-social-icon,
 .team-social-link:focus .team-social-icon {
-    background-color: var(--accent-color);
     fill: #ffffff;
 }
 
@@ -677,6 +678,7 @@ body {
     font-size: 16px;
     line-height: 1.87;
     letter-spacing: 0.03em;
+    color: var(--main-text-color);
 }
 
 .projects-item:hover {
