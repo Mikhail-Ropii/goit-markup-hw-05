@@ -631,7 +631,8 @@ body {
     background-color: var(--buttons-background-color);
 
     transition: background-color var(--animate-time) var(--animate-function),
-    box-shadow var(--animate-time) var(--animate-function);
+    box-shadow var(--animate-time) var(--animate-function),
+    color var(--animate-time) var(--animate-function);
 }
 
 .filter-button:hover,
